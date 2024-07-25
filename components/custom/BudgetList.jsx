@@ -69,7 +69,7 @@ const BudgetList = () => {
             <BudgetItem budget={budget} />
           </div>
         ))}
-        <Button className="absolute bottom-3 left-3" onClick={() => getBudgetList()}>Get Data</Button>
+        <Button className="fixed bottom-3 right-3" onClick={() => getBudgetList()}>Refresh</Button>
       </div>
     </div>
   );

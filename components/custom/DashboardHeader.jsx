@@ -3,7 +3,7 @@ import React from "react";
 
 const DashboardHeader = () => {
   return (
-    <div className="p-5 shadow-lg border-b flex justify-between items-center">
+    <div className="p-5 shadow-lg border-b flex justify-between items-center cursor-pointer">
       <div></div>
       <div>
         <UserButton />
