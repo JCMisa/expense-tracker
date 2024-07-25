@@ -2,6 +2,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Toaster } from "@/components/ui/sonner";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -22,7 +23,10 @@ export default function RootLayout({ children }) {
         <head>
           <link rel="icon" type="image/svg+xml" href="/wallet.svg" />
         </head>
-        <body className={outfit.className}>{children}</body>
+        <body className={outfit.className}>
+          <Toaster />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
