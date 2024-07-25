@@ -57,10 +57,15 @@ const CreateBudget = () => {
   return (
     <div>
       <Dialog>
-        <DialogTrigger asChild>
-          <div className="bg-primary p-10 rounded-md items-center flex flex-col cursor-pointer hover:shadow-md transition-all">
+        <DialogTrigger asChild className="hidden sm:flex">
+          <div className="bg-primary min-h-[100px] p-10 rounded-md items-center flex flex-col cursor-pointer hover:shadow-md transition-all">
             <h2 className="text-3xl">+</h2>
             <h2>Create New Budget</h2>
+          </div>
+        </DialogTrigger>
+        <DialogTrigger asChild className="block sm:hidden">
+          <div className="flex justify-center sm:hidden absolute bottom-3 right-3 w-14 h-14 items-center rounded-full bg-primary cursor-pointer">
+            <h2 className="text-3xl">+</h2>
           </div>
         </DialogTrigger>
         <DialogContent>
