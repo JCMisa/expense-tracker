@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { Button } from "../ui/button";
 
 const Hero = () => {
   return (
@@ -20,12 +22,14 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-light shadow hover:bg-primary focus:outline-none focus:ring active:bg-primary sm:w-auto"
-              href="#"
-            >
-              Get Started
-            </a>
+            <Link href={"/dashboard"}>
+              <Button
+                className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-light shadow hover:bg-primary focus:outline-none focus:ring active:bg-primary sm:w-auto"
+                href="#"
+              >
+                Get Started
+              </Button>
+            </Link>
 
             <a
               className="block w-full rounded px-12 py-3 text-sm font-medium text-light shadow hover:text-secondary focus:outline-none focus:ring active:text-primary sm:w-auto"
