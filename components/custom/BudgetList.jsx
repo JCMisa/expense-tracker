@@ -32,24 +32,31 @@ const BudgetList = () => {
         .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
         .groupBy(Budgets.id);
 
-      if (result) {
+      if (result && result.length > 0) {
         setBudgetList(result)
         toast(
           <p className="text-sm font-bold text-green-500">
-            Two tables joined successfully
+            Budgets fetched successfully
           </p>
         );
         console.log(result);
         console.log(budgetList);
 
         console.log("joined expenses and budgets tables: ", budgetList);
-      } else {
+      }
+      else if (result.length == 0) {
+        toast(<p className="text-sm font-bold text-light">
+          You have no budget to show
+        </p>)
+      }
+      else {
         toast(
           <p className="text-sm font-bold text-red-500">
             Error occured while joining expenses and budgets tables
           </p>
         );
       }
+
     } catch (error) {
       toast(
         <p className="text-sm font-bold text-red-500">
