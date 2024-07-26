@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import CreateBudget from "./CreateBudget";
 import { db } from "@/utils/db";
-import { eq, getTableColumns, sql } from "drizzle-orm";
+import { desc, eq, getTableColumns, sql } from "drizzle-orm";
 import { Budgets, Expenses } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
@@ -30,7 +30,8 @@ const BudgetList = () => {
         .from(Budgets)
         .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId)) // join te Expenses table to Budgets table where Expenses.budgetId is equal to Budgets.id
         .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
-        .groupBy(Budgets.id);
+        .groupBy(Budgets.id)
+        .orderBy(desc(Budgets.id));
 
       if (result && result.length > 0) {
         setBudgetList(result)
@@ -39,8 +40,8 @@ const BudgetList = () => {
             Budgets fetched successfully
           </p>
         );
-        console.log(result);
-        console.log(budgetList);
+        console.log("Result: ", result);
+        console.log("budgetList: ", budgetList);
 
         console.log("joined expenses and budgets tables: ", budgetList);
       }
@@ -70,10 +71,15 @@ const BudgetList = () => {
   return (
     <div className="mt-7">
       <div className="grid grid-cols-1 gap-5">
-        <CreateBudget />
-        {budgetList.map((budget) => (
+        {/*adding refreshData method that calls the getBudgetList will enable us to see in the list the added record right after it is added by refreshing the invocation of the method getBudgetList */}
+        <CreateBudget refreshData={() => getBudgetList()} />
+        {budgetList.length > 0 ? budgetList.map((budget) => (
           <div key={budget.id}>
             <BudgetItem budget={budget} />
+          </div>
+        )) : [1, 2, 3].map((item, index) => (
+          <div key={index} className="w-full bg-dark rounded-lg h-[150px] animate-pulse">
+
           </div>
         ))}
         <Button className="fixed bottom-3 right-3" onClick={() => getBudgetList()}>Refresh</Button>
