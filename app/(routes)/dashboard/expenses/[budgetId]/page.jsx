@@ -23,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { useRouter } from "next/navigation";
+import EditBudget from "@/components/custom/EditBudget";
 
 
 const Expense = ({ params }) => {
@@ -132,25 +133,29 @@ const Expense = ({ params }) => {
     <h2 className="text-2xl font-bold flex justify-between items-center">
       My Expenses
 
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <Button className="flex gap-2" variant="destructive">
-            <Trash /> Delete
-          </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your budget along with the expenses.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <div className="flex gap-2 items-center">
+        <EditBudget budgetInfo={budgetInfo} refreshData={() => getBudgetInfo()} />
+
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button className="flex gap-2 min-w-40" variant="destructive">
+              <Trash /> Delete
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your budget along with the expenses.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
 
     </h2>
 
