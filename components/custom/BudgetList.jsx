@@ -35,11 +35,6 @@ const BudgetList = () => {
 
       if (result && result.length > 0) {
         setBudgetList(result)
-        toast(
-          <p className="text-sm font-bold text-green-500">
-            Budgets fetched successfully
-          </p>
-        );
         console.log("Result: ", result);
         console.log("budgetList: ", budgetList);
 

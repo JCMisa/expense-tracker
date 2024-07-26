@@ -53,11 +53,6 @@ const Expense = ({ params }) => {
 
       if (result) {
         setBudgetInfo(result[0])
-        toast(
-          <p className="text-sm font-bold text-green-500">
-            Budget Information fetched successfully
-          </p>
-        );
         console.log("budget info Result: ", result);
       } else {
         toast(
@@ -86,9 +81,6 @@ const Expense = ({ params }) => {
 
       if (result) {
         setExpenseList(result)
-        toast(<p className="text-sm font-bold text-green-500">
-          Expenses fetched successfully
-        </p>)
         console.log("expense list: ", result);
       }
     } catch (error) {
