@@ -7,6 +7,7 @@ import { UserButton, useUser } from "@clerk/nextjs";
 import { desc, eq, getTableColumns, sql } from "drizzle-orm";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
+import BarChartDashboard from "@/components/custom/BarChartDashboard";
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -65,6 +66,15 @@ const Dashboard = () => {
     <p className="text-gray-500">Check the flow of your money, and manage your expenses.</p>
 
     <CardInfo budgetList={budgetList} />
+
+    <div className="grid grid-cols-1 md:grid-cols-3 mt-7">
+      <div className="md:col-span-2">
+        <BarChartDashboard budgetList={budgetList} />
+      </div>
+      <div>
+        Other Content
+      </div>
+    </div>
   </div>;
 };
 
