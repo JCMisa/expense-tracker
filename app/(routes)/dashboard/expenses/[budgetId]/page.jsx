@@ -156,7 +156,6 @@ const Expense = ({ params }) => {
       <AddExpense refreshData={() => getBudgetInfo()} budgetId={params.budgetId} />
     </div>
     <div className="mt-7">
-      <h2 className="fonts-bold text-lg">Latest Expenses</h2>
       <ExpenseList expenseList={expenseList} refreshData={() => getBudgetInfo()} />
     </div>
   </div>;

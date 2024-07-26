@@ -23,13 +23,14 @@ const ExpenseList = ({ expenseList, refreshData }) => {
     }
     return (
         <div className='mt-3'>
-            <div className='grid grid-cols-4 bg-primary p-2'>
+            <h2 className="fonts-bold text-lg">Latest Expenses</h2>
+            <div className='grid grid-cols-4 bg-primary p-2 mt-3'>
                 <h2 className='font-bold'>Name</h2>
                 <h2 className='font-bold'>Amount</h2>
                 <h2 className='font-bold'>Date</h2>
                 <h2 className='flex justify-center items-center font-bold'>Action</h2>
             </div>
-            {expenseList.map((expense, index) => (
+            {expenseList && expenseList.map((expense, index) => (
                 <div className='grid grid-cols-4 bg-dark p-2' key={index}>
                     <h2>{expense?.name}</h2>
                     <h2>{expense?.amount}</h2>
