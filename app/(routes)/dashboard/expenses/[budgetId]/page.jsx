@@ -8,7 +8,7 @@ import { db } from "@/utils/db";
 import { Budgets, Expenses } from "@/utils/schema";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { desc, eq, getTableColumns, sql } from "drizzle-orm";
-import { Trash } from "lucide-react";
+import { ArrowLeft, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {
@@ -123,7 +123,10 @@ const Expense = ({ params }) => {
 
   return <div className="p-5">
     <h2 className="text-2xl font-bold flex justify-between items-center">
-      My Expenses
+      <div className="flex gap-2 items-center">
+        <ArrowLeft width={20} height={20} className="cursor-pointer" onClick={() => route.back()} />
+        My Expenses
+      </div>
 
       <div className="flex gap-2 items-center">
         <EditBudget budgetInfo={budgetInfo} refreshData={() => getBudgetInfo()} />
