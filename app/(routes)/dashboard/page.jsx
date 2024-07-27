@@ -95,23 +95,23 @@ const Dashboard = () => {
 
     <CardInfo budgetList={budgetList} />
 
-    <div className="w-full">
+    <div>
       <BarChartDashboard budgetList={budgetList} />
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 mt-7 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 mt-7 gap-5">
       <div className="md:col-span-2">
         <ExpenseList expenseList={expensesList} refreshData={() => getBudgetList()} />
       </div>
-      <div className="grid gap-5">
-        <h2 className="text-lg font-bold">Budget List</h2>
-        {
-          budgetList.map((budget, index) => (
-            <BudgetItem budget={budget} key={index} />
-          ))
-        }
-      </div>
+    </div>
 
+    <h2 className="text-lg font-bold mt-7">Budget List</h2>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      {
+        budgetList.map((budget, index) => (
+          <BudgetItem budget={budget} key={index} />
+        ))
+      }
     </div>
   </div>;
 };

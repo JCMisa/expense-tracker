@@ -78,9 +78,3 @@
     background: #433d8b;
   }
 }
-
-@media (max-width: 640px) {
-  .barchart {
-    display: none;
-  }
-}
